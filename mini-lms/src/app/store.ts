@@ -1,0 +1,30 @@
+// Estado compartido simple del Mini-LMS.
+// En la Semana 9 lo formalizaremos como un servicio de Angular.
+export interface Estudiante {
+ nombre: string;
+ creditos: number;
+}
+export const estudiantes: Estudiante[] = [
+ { nombre: 'María Torres', creditos: 18 },
+ { nombre: 'Luis Pérez', creditos: 8 },
+ { nombre: 'Ana Ruiz', creditos: 14 }
+];
+// Misma regla de matrícula de la Unidad 1.
+export function estado(creditos: number): string {
+ if (creditos < 1 || creditos > 24) {
+ return 'Créditos inválidos';
+ } else if (creditos >= 12) {
+ return 'Matriculado';
+ }
+ return 'Pendiente';
+}
+
+let i = 0;
+let acumulador = 0;
+
+for(i=0; i<estudiantes.length; i++){
+    let est = estudiantes[i];
+    acumulador += est.creditos;
+}
+
+export const prom = acumulador/estudiantes.length;
